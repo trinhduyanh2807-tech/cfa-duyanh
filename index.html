@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CFA Level 2 – Lộ trình của Duy Anh</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600&family=Source+Serif+4:wght@600;700&display=swap">
+<style>
+:root{--bg:#eeeefa;--card:#fff;--ink:#141a4d;--mut:#575d8a;--line:#d3d5ec;--gold:#f0c14b;--gd:#8a6410;--fb:#f3f1fb;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#090b26;--card:#12163f;--ink:#e9eaff;--mut:#a3a8d6;--line:#272c66;--gd:#f0c14b;--fb:#0c0f33}}
+:root[data-theme="dark"]{--bg:#090b26;--card:#12163f;--ink:#e9eaff;--mut:#a3a8d6;--line:#272c66;--gd:#f0c14b;--fb:#0c0f33}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.6 "Be Vietnam Pro",system-ui,sans-serif}
+.hero{background:linear-gradient(160deg,#0d1033,#2a1a63);color:#fff;padding:28px 16px 24px}
+.in{max-width:900px;margin:0 auto}
+.hero p{margin:0;color:#c9cbf0}
+.hero h1{font:700 1.5rem "Source Serif 4",Georgia,serif;margin:4px 0 8px}
+.big{font:700 clamp(4.5rem,22vw,7.5rem)/1 "Source Serif 4",Georgia,serif;color:var(--gold)}
+.big small{font:500 1.1rem "Be Vietnam Pro",sans-serif;color:#c9cbf0;margin-left:8px}
+.stats{display:flex;gap:20px;flex-wrap:wrap;margin:8px 0;color:#c9cbf0;font-size:.95rem}
+.stats b{color:#fff}
+.bar{height:10px;background:#ffffff26;border-radius:5px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--gold);width:0;transition:width .3s}
+.hero label{font-size:.9rem;color:#c9cbf0}
+input[type=date]{font:inherit;padding:3px 6px;border-radius:6px;border:1px solid #ffffff55;background:#ffffff14;color:#fff;color-scheme:dark}
+main{max-width:900px;margin:0 auto;padding:8px 16px 56px}
+h2{font:700 1.35rem "Source Serif 4",Georgia,serif;margin:32px 0 10px}
+svg{width:100%;height:auto;background:var(--fb);border:1px solid var(--line);border-radius:12px}
+.g{cursor:pointer}
+.back{margin-bottom:8px}
+.btn{background:var(--ink);color:var(--bg);border:0;border-radius:8px;padding:8px 14px;font:inherit;cursor:pointer}
+.btn.alt{background:transparent;color:var(--ink);border:1px solid var(--line)}
+button:focus-visible,summary:focus-visible,input:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.t{background:var(--card);border:1px solid var(--line);border-radius:10px;margin-bottom:10px}
+.t summary{cursor:pointer;padding:14px 16px;display:flex;gap:12px;align-items:center;list-style:none}
+.t summary::-webkit-details-marker{display:none}
+.tn{flex:1;font-weight:600}.w{color:var(--mut);font-size:.85rem}.pc{font-weight:600;min-width:42px;text-align:right;color:var(--gd)}
+.sec{padding:12px 16px;border-top:1px solid var(--line)}
+.sec label{display:flex;gap:10px;align-items:center;font-weight:600;cursor:pointer}
+.sec input{width:18px;height:18px;accent-color:#c9962a}
+.sec p{margin:4px 0 6px 28px;color:var(--mut);font-size:.95rem}
+.f{margin:4px 0 4px 28px;padding:6px 10px;border-left:4px solid var(--gold);background:var(--fb);border-radius:0 6px 6px 0;font:500 .92rem/1.5 ui-monospace,Consolas,monospace;overflow-x:auto;white-space:pre-wrap;overflow-wrap:anywhere}
+.ph{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--gold);border-radius:10px;padding:10px 16px;margin-bottom:8px}
+.ph b{display:block}.ph span{color:var(--mut);font-size:.9rem}
+footer{margin-top:32px;color:var(--mut);font-size:.85rem}
+</style>
+</head>
+<body>
+<header class="hero"><div class="in">
+  <p>Duy Anh, còn</p>
+  <div class="big"><span id="days">–</span><small>ngày</small></div>
+  <h1>đến kỳ thi CFA Level 2</h1>
+  <label>Ngày thi: <input type="date" id="exam"></label>
+  <div class="stats"><span><b id="weeks">–</b> tuần còn lại</span><span>Tiến độ tổng: <b id="total">0%</b></span><span><b id="cnt">0</b> / <b id="all">0</b> phần đã xong</span></div>
+  <div class="bar" role="progressbar" aria-label="Tiến độ tổng" aria-valuemin="0" aria-valuemax="100"><i id="tbar"></i></div>
+</div></header>
+<main>
+<h2>Mindmap</h2>
+<p style="margin:0 0 8px;color:var(--mut)">Chạm vào một môn để xem các phần của môn đó. Ô vàng là phần đã xong.</p>
+<button class="btn alt back" id="back" hidden>Quay lại tất cả môn</button>
+<svg id="map" viewBox="0 0 720 640" role="img" aria-label="Mindmap CFA Level 2"></svg>
+
+<h2>Kiến thức và công thức từng môn</h2>
+<div id="topics"></div>
+
+<h2>Lộ trình gợi ý</h2>
+<div class="ph"><b>10/2026 – 12/2026: Học nội dung</b><span>Đi hết môn nặng điểm trước: FSA, Equity, Fixed Income, Corporate Issuers, Portfolio Management.</span></div>
+<div class="ph"><b>1/2027 – 2/2027: Hoàn tất bài giảng</b><span>Ethics, Quant, Economics, Derivatives, Alternatives. Bắt đầu ôn công thức.</span></div>
+<div class="ph"><b>3/2027 – 4/2027: Luyện đề</b><span>Question bank theo mục, sau đó mock exam trọn vẹn. Ghi lại lỗi sai để ôn.</span></div>
+<div class="ph"><b>2 tuần cuối: Nước rút</b><span>Chỉ ôn công thức, Ethics và mục hay sai.</span></div>
+<footer>Trang do Claude soạn cho Duy Anh, là bản tóm tắt để ôn nhanh. Hãy đối chiếu với curriculum CFA Institute của năm thi.</footer>
+</main>
+<script>
+var SH=["Ethics","Quant","Economics","FSA","Corp Issuers","Equity","Fixed Income","Derivatives","Alternatives","Portfolio"];
+var T=[
+["Ethics & Professional Standards","10–15%",[
+["Standards I–VII","I Chuyên nghiệp; II Toàn vẹn thị trường; III Nghĩa vụ với khách hàng; IV Với nhà tuyển dụng; V Phân tích đầu tư; VI Xung đột lợi ích; VII Trách nhiệm ứng viên CFA. Luật nào nghiêm hơn thì theo luật đó.",[]],
+["GIPS","Tuân thủ ở cấp công ty, composite gồm mọi danh mục toàn quyền quản lý, dùng time-weighted return, định giá ít nhất hàng tháng, trình bày tối thiểu 5 năm rồi tăng dần tới 10.",[]],
+["Áp dụng vào tình huống","Xác định bên liên quan, chuẩn bị vi phạm, hành động phù hợp. Ưu tiên khách hàng và tính toàn vẹn thị trường.",[]]]],
+["Quantitative Methods","5–10%",[
+["Hồi quy bội","Kiểm định hệ số bằng t, cả mô hình bằng F. Dùng adjusted R² và AIC/BIC để so sánh mô hình.",["ŷ = b0 + b1X1 + … + bkXk","t = (b̂ − b)/SE(b̂), df = n − k − 1","F = (RSS/k) / (SSE/(n − k − 1))","Adj R² = 1 − [(n − 1)/(n − k − 1)](1 − R²)","AIC = n·ln(SSE/n) + 2(k + 1); BIC = n·ln(SSE/n) + ln(n)(k + 1)"]],
+["Vi phạm giả định","Heteroskedasticity (Breusch-Pagan): dùng robust SE. Tự tương quan: Durbin-Watson. Đa cộng tuyến: VIF > 5 cần xem xét, > 10 nghiêm trọng.",["BP: χ² = n × R² (phần dư), df = k","DW ≈ 2(1 − r)"]],
+["Chuỗi thời gian","Chuỗi có unit root thì lấy sai phân. AR(1) hợp lệ khi phần dư không tự tương quan. Đánh giá bằng RMSE ngoài mẫu.",["AR(1): xt = b0 + b1·x(t−1) + ε","Mức hồi quy về trung bình = b0/(1 − b1)","Random walk: xt = x(t−1) + ε"]],
+["Machine learning","Có giám sát (hồi quy, CART, SVM, KNN), không giám sát (PCA, k-means, phân cấp). Chống overfitting bằng cross-validation và regularization (LASSO).",[]]]],
+["Economics","5–10%",[
+["Tỷ giá hối đoái","Parity điều kiện là nền của dự báo tỷ giá.",["Covered IRP: F/S = (1 + i_giá)/(1 + i_cơ sở)","PPP tuyệt đối: S = P_giá / P_cơ sở","PPP tương đối: %ΔS ≈ π_giá − π_cơ sở","Điểm forward = F − S"]],
+["Tăng trưởng kinh tế","Hạch toán tăng trưởng tách phần đóng góp của vốn, lao động và năng suất (TFP). Solow: hội tụ khi đầu tư bằng khấu hao.",["Y = A·K^α·L^(1−α)","ΔY/Y = ΔA/A + α·ΔK/K + (1 − α)·ΔL/L"]],
+["Kinh tế học của quy định","Quy định để xử lý thất bại thị trường. Chi phí: tuân thủ và xã hội. Rủi ro regulatory capture.",[]]]],
+["Financial Statement Analysis","10–15%",[
+["Đầu tư liên công ty","Dưới 20%: giá trị hợp lý. 20–50%: equity method. Trên 50%: hợp nhất.",["Equity method: Đầu tư cuối = Đầu tư đầu + phần lợi nhuận − cổ tức","Goodwill = Giá mua − FV tài sản ròng xác định được"]],
+["Lương hưu và phúc lợi","Kế hoạch DB: nghĩa vụ là PBO. IFRS đưa remeasurement vào OCI.",["Funded status = FV tài sản kế hoạch − PBO"]],
+["Hoạt động đa quốc gia","Current rate: chênh lệch dịch vào OCI (CTA). Temporal: chênh lệch vào lãi lỗ, tài sản phi tiền tệ theo tỷ giá lịch sử.",[]],
+["Chất lượng lợi nhuận","Lợi nhuận bền vững và phản ánh đúng thực tế. Dùng accruals và M-score để phát hiện điều chỉnh.",["Balance-sheet accruals = (NOA cuối − NOA đầu)/NOA bình quân","Cash-flow accruals = (NI − CFO − CFI)/NOA bình quân"]]]],
+["Corporate Issuers","10–15%",[
+["Cổ tức và mua lại cổ phiếu","Mua lại làm tăng EPS nếu earnings yield cao hơn lãi vay sau thuế.",["Payout = Cổ tức / NI","EPS mới = (NI − lãi vay sau thuế) / (Số CP − CP mua lại)"]],
+["Chi phí vốn","Unlever rồi relever beta theo cấu trúc vốn mục tiêu.",["WACC = wd·rd(1 − t) + wp·rp + we·re","CAPM: re = rf + β(E[Rm] − rf)","βasset = βe / [1 + (1 − t)·D/E]","re = rd + phần bù rủi ro"]],
+["Cấu trúc vốn","MM: nợ tạo lợi ích thuế nhưng làm tăng chi phí kiệt quệ. Pecking order: nội bộ, rồi nợ, rồi vốn cổ phần.",["MM có thuế: VL = VU + t·D","Trade-off: VL = VU + t·D − PV(chi phí kiệt quệ)"]],
+["M&A và quản trị công ty","Synergy là nguồn giá trị. Hội đồng quản trị độc lập và quyền cổ đông thiểu số là trọng tâm quản trị.",["Lợi ích bên mua = Synergy − Premium","Premium = Giá trả − Giá độc lập của target"]]]],
+["Equity Valuation","10–15%",[
+["Mô hình chiết khấu cổ tức","Gordon cho tăng trưởng ổn định, nhiều giai đoạn khi tăng trưởng thay đổi.",["V0 = D1 / (r − g)","g = b × ROE","Justified P/E = (1 − b)/(r − g)"]],
+["FCFF và FCFE","FCFF chiết khấu bằng WACC, FCFE bằng chi phí vốn chủ.",["FCFF = NI + NCC + Int(1 − t) − FCInv − WCInv","FCFE = FCFF − Int(1 − t) + Vay ròng"]],
+["Định giá theo thị trường","So sánh các bội số với công ty tương đồng.",["Justified P/B = (ROE − g)/(r − g)","Justified P/S = (E/S)(1 − b)(1 + g)/(r − g)"]],
+["Residual income","Giá trị tạo ra khi ROE vượt chi phí vốn chủ.",["RIt = Et − re·Bt−1 = (ROE − re)·Bt−1","V0 = B0 + Σ RIt/(1 + re)^t"]],
+["Công ty tư nhân","Điều chỉnh thiếu kiểm soát (DLOC) và thiếu thanh khoản (DLOM).",["Giá trị = Giá trị × (1 − DLOC) × (1 − DLOM)","Build-up: re = rf + ERP + size premium + rủi ro riêng"]]]],
+["Fixed Income","10–15%",[
+["Cấu trúc kỳ hạn lãi suất","Bootstrap spot rate từ đường par; forward suy ra từ spot.",["(1 + zB)^B = (1 + zA)^A × (1 + f)^(B−A)","Giá = Σ CFt / (1 + zt)^t"]],
+["Phân tích tín dụng","Tổn thất kỳ vọng và credit spread phản ánh xác suất vỡ nợ và mất mát khi vỡ nợ.",["EL = PD × LGD × Exposure","LGD = 1 − tỷ lệ thu hồi","Credit spread ≈ PD × LGD"]],
+["Trái phiếu có quyền chọn","Callable = straight − call; putable = straight + put. OAS loại bỏ giá trị quyền chọn.",["OAS = Z-spread − giá trị quyền chọn","Eff. duration = (V− − V+)/(2·V0·Δy)","Eff. convexity = (V− + V+ − 2V0)/(V0·Δy²)"]],
+["Credit default swap","Người mua bảo hiểm có lãi khi spread tăng.",["Upfront ≈ (Spread CDS − Coupon) × Duration","Δ giá trị ≈ Δspread × Duration × Notional"]],
+["MBS","Rủi ro co giãn (contraction) và kéo dài (extension). Tranche PAC bảo vệ bằng tranche support.",["SMM = 1 − (1 − CPR)^(1/12)"]]]],
+["Derivatives","5–10%",[
+["Forward và futures","Định giá theo chi phí nắm giữ (cost of carry).",["F0 = (S0 − PV lợi ích + PV chi phí) × (1 + r)^T","Cổ phiếu có yield q: F0 = S0 × e^((r − q)T)","Giá trị forward: Vt = St − F0/(1 + r)^(T−t)"]],
+["Quyền chọn","Put-call parity giữ khi không có chênh lệch giá. Mô hình nhị phân định giá theo xác suất trung tính rủi ro.",["c + X/(1 + r)^T = p + S0","π = (e^(rΔt) − d)/(u − d); u = e^(σ√Δt), d = 1/u","c = S0·N(d1) − X·e^(−rT)·N(d2)","d1 = [ln(S0/X) + (r + σ²/2)T]/(σ√T); d2 = d1 − σ√T"]],
+["Swaps","Giá trị swap là chênh lệch PV của dòng nhận và dòng trả.",["Zi = 1/(1 + ri)^i","Lãi suất cố định = (1 − ZN)/ΣZi"]]]],
+["Alternative Investments","5–10%",[
+["Bất động sản","Ba cách định giá: so sánh, thu nhập, chi phí. Dùng NOI, không tính khấu hao và lãi vay.",["NOI = Doanh thu − chi phí hoạt động","Giá trị = NOI / cap rate","DSCR = NOI / Nợ phải trả kỳ; LTV = Vay / Giá trị"]],
+["Private equity","J-curve: lợi nhuận âm giai đoạn đầu. Chú ý hurdle rate và carried interest.",["DPI = Phân phối / Vốn đã góp","TVPI = DPI + RVPI"]],
+["Hedge fund","Chiến lược: equity long/short, event-driven, relative value, macro. Phí quản lý cộng phí thưởng có hurdle và high-water mark.",["Phí thưởng = tỷ lệ × max(0, lợi nhuận − hurdle)"]],
+["Hàng hóa và hạ tầng","Contango cho roll yield âm, backwardation cho roll yield dương. Hạ tầng: greenfield và brownfield.",["Tổng lợi suất = Spot + Roll yield + Collateral yield"]]]],
+["Portfolio Management","10–15%",[
+["Mô hình nhân tố","Đa nhân tố giải thích lợi suất qua độ nhạy với từng nhân tố.",["E(R) = Rf + Σ βk·λk","Sharpe = (Rp − Rf)/σp","IR = (Rp − Rb)/Tracking error"]],
+["Quản lý chủ động","Fundamental law: kỹ năng nhân với độ rộng.",["IR = IC × √BR","IR = TC × IC × √BR","E(Ra) = IR × σa"]],
+["Danh mục và quản trị rủi ro","Danh mục hiệu quả nằm trên đường biên; đo rủi ro bằng VaR, kịch bản và stress test.",["σp² = w1²σ1² + w2²σ2² + 2·w1·w2·ρ·σ1·σ2","VaR ≈ (z·σ − μ) × Giá trị danh mục"]]]]
+];
+var KEY="cfa2-duyanh-v2",S={done:{},exam:"2027-05-01"},view=null;
+try{var raw=localStorage.getItem(KEY);if(raw){S=JSON.parse(raw)}}catch(e){}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+function frac(i){var t=T[i][2],c=0;t.forEach(function(_,j){if(S.done[i+"-"+j])c++});return c/t.length}
+var box=document.getElementById("topics");
+T.forEach(function(t,i){
+  var d=document.createElement("details");d.className="t";d.id="t"+i;
+  d.innerHTML='<summary><span class="tn"></span><span class="w"></span><span class="pc" id="p'+i+'"></span></summary>';
+  d.querySelector(".tn").textContent=t[0];d.querySelector(".w").textContent=t[1];
+  t[2].forEach(function(s,j){
+    var k=i+"-"+j,div=document.createElement("div");div.className="sec";div.id="s"+k;
+    var lb=document.createElement("label"),cb=document.createElement("input");
+    cb.type="checkbox";cb.checked=!!S.done[k];
+    cb.onchange=function(){if(cb.checked)S.done[k]=1;else delete S.done[k];save();update()};
+    lb.appendChild(cb);lb.appendChild(document.createTextNode(s[0]));div.appendChild(lb);
+    var p=document.createElement("p");p.textContent=s[1];div.appendChild(p);
+    s[2].forEach(function(f){var x=document.createElement("div");x.className="f";x.textContent=f;div.appendChild(x)});
+    d.appendChild(div)});
+  box.appendChild(d)});
+var NS="http://www.w3.org/2000/svg";
+function el(n,a,txt){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);if(txt!=null)e.textContent=txt;return e}
+function map(){
+  var svg=document.getElementById("map");svg.innerHTML="";
+  var cx=360,cy=320,items,title;
+  if(view===null){title="CFA L2";items=T.map(function(t,i){var f=frac(i);return{l:SH[i]+" "+Math.round(f*100)+"%",f:f,i:i}})}
+  else{title=SH[view];items=T[view][2].map(function(s,j){var d=!!S.done[view+"-"+j];return{l:s[0].length>20?s[0].slice(0,19)+"…":s[0],f:d?1:0,i:j}})}
+  var n=items.length,R=view===null?245:225;
+  items.forEach(function(it,k){
+    var a=-Math.PI/2+k*2*Math.PI/n,x=cx+R*Math.cos(a)*1.15,y=cy+R*Math.sin(a);
+    svg.appendChild(el("line",{x1:cx,y1:cy,x2:x,y2:y,stroke:"#c9962a","stroke-width":2,opacity:.6}));
+    var g=el("g",{"class":"g"});
+    g.appendChild(el("rect",{x:x-68,y:y-18,width:136,height:36,rx:18,fill:it.f===1?"#f0c14b":"#1c2266",stroke:"#f0c14b","stroke-width":it.f>0&&it.f<1?3:1.5}));
+    g.appendChild(el("text",{x:x,y:y+5,"text-anchor":"middle","font-size":13,"font-weight":600,fill:it.f===1?"#0d1033":"#fff"},it.l));
+    g.onclick=function(){
+      if(view===null){view=it.i;document.getElementById("t"+it.i).open=true;map();document.getElementById("back").hidden=false}
+      else{var t=document.getElementById("t"+view);t.open=true;document.getElementById("s"+view+"-"+it.i).scrollIntoView({behavior:"smooth",block:"center"})}};
+    svg.appendChild(g)});
+  var c=el("g",{"class":"g"});
+  c.appendChild(el("circle",{cx:cx,cy:cy,r:52,fill:"#0d1033",stroke:"#f0c14b","stroke-width":3}));
+  c.appendChild(el("text",{x:cx,y:cy+6,"text-anchor":"middle","font-size":16,"font-weight":700,fill:"#f0c14b"},title));
+  c.onclick=function(){view=null;document.getElementById("back").hidden=true;map()};
+  svg.appendChild(c)}
+document.getElementById("back").onclick=function(){view=null;this.hidden=true;map()};
+function update(){
+  var all=0,ok=0;
+  T.forEach(function(t,i){all+=t[2].length;t[2].forEach(function(_,j){if(S.done[i+"-"+j])ok++});
+    document.getElementById("p"+i).textContent=Math.round(frac(i)*100)+"%"});
+  var p=Math.round(ok/all*100);
+  document.getElementById("total").textContent=p+"%";
+  document.getElementById("cnt").textContent=ok;document.getElementById("all").textContent=all;
+  document.getElementById("tbar").style.width=p+"%";
+  document.querySelector(".bar").setAttribute("aria-valuenow",p);
+  map()}
+function countdown(){
+  var d=new Date(S.exam+"T00:00:00"),left=Math.max(0,Math.ceil((d-new Date())/864e5));
+  document.getElementById("days").textContent=left;document.getElementById("weeks").textContent=Math.ceil(left/7)}
+var ex=document.getElementById("exam");ex.value=S.exam;
+ex.onchange=function(){if(ex.value){S.exam=ex.value;save();countdown()}};
+countdown();update();
+</script>
+</body>
+</html>
